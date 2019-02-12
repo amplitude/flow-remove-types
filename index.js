@@ -1,4 +1,4 @@
-var babylon = require('babylon');
+var babylon = require('@babel/parser');
 var vlq = require('vlq');
 
 /**
@@ -49,7 +49,8 @@ module.exports = function flowRemoveTypes(source, options) {
     allowReturnOutsideFunction: true,
     allowSuperOutsideMethod: true,
     sourceType: 'module',
-    plugins: [ '*', 'jsx', 'flow' ],
+    tokens: true,
+    plugins: [ '*', 'jsx', 'flow', 'classProperties' ],
   });
 
   var removedNodes = [];
